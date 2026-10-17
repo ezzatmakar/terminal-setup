@@ -41,6 +41,8 @@ Everything uses the same brightened **Tokyo Night** colors and **FiraCode Nerd F
    It installs Hyper, FiraCode Nerd Font, Starship, fzf, zoxide, direnv, nvm and Oh My Zsh with
    its autosuggestion and syntax-highlighting plugins, then links the config files into place.
    Existing files are kept as `<name>.backup-<date>`.
+   If Hyper was open while installing, quit and reopen it once. Until then it won't notice
+   edits to the linked `~/.hyper.js`.
 
 3. Open a new terminal, then install Node: `nvm install --lts && nvm alias default node`.
 4. Put API keys in `~/.zsh_secrets` (created for you with `chmod 600`). It is loaded by `.zshrc` and never committed.
@@ -73,6 +75,9 @@ before committing.
   (becomes `#hyper`) and `body.x & …` (becomes `body.x #hyper …`) instead.
 - Hyper's main process caches the plugin's CSS. After editing `index.js`, use
   Plugins › Update All Now and then ⌘⇧R. ⌘⇧R alone only reloads the sidebar code.
+- The installer puts a small loader in `~/.hyper_plugins/local/hyper-devdeck/` instead of a
+  symlink. Hyper clears its plugin cache by folder path, and Node caches a symlinked plugin
+  under the repo path, so Update All Now would keep running the old code.
 - Hyper 3.4 ships Electron 20, whose time-zone data predates some recent DST changes
   (for example Egypt's in 2023). The sidebar clock takes the UTC offset from macOS (`date +%z`)
   to stay correct.
