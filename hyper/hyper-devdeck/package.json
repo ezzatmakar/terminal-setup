@@ -1,0 +1,8 @@
+{
+  "name": "hyper-devdeck",
+  "version": "1.0.0",
+  "description": "Warp-style vertical tab sidebar and developer chrome for Hyper 3.x",
+  "main": "index.js",
+  "private": true,
+  "keywords": ["hyper", "hyper-plugin", "hyper-theme"]
+}

@@ -1,0 +1,160 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Developer prompt: Tokyo Night colors + Nerd Font icons (font: FiraCode Nerd Font).
+# Line 1: [user@host on SSH] path  git branch + status  runtimes for this project  last command duration
+# Line 2: exit code (on failure) + prompt arrow
+
+add_newline = true
+command_timeout = 1000
+scan_timeout = 30
+palette = "tokyo_night"
+continuation_prompt = "[∙](comment) "
+
+format = """
+$username$hostname$directory$git_branch$git_commit$git_state$git_status\
+$nodejs$bun$deno$php$python$ruby$java$golang$rust$dart$docker_context$direnv\
+$cmd_duration$jobs
+$status$character"""
+
+[palettes.tokyo_night]
+fg = "#d0d8fa"
+comment = "#7a83b0"
+blue = "#7aa2f7"
+cyan = "#7dcfff"
+teal = "#73daca"
+green = "#9ece6a"
+yellow = "#e0af68"
+orange = "#ff9e64"
+red = "#f7768e"
+magenta = "#bb9af7"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+
+[status]
+disabled = false
+format = "[✘ $status]($style) "
+style = "bold red"
+
+[username]
+format = "[$user]($style)[@](comment)"
+style_user = "bold yellow"
+style_root = "bold red"
+
+[hostname]
+ssh_only = true
+ssh_symbol = " "
+format = "[$ssh_symbol$hostname]($style) "
+style = "bold yellow"
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "bold blue"
+read_only = " \U000f033e"
+read_only_style = "red"
+truncation_length = 3
+truncate_to_repo = true
+truncation_symbol = "…/"
+
+[git_branch]
+format = "[on](comment) [$symbol$branch(:$remote_branch)]($style) "
+symbol = " "
+style = "bold magenta"
+
+[git_commit]
+tag_symbol = "  "
+style = "bold green"
+
+[git_state]
+style = "bold yellow"
+
+[git_status]
+format = "([$all_status$ahead_behind]($style) )"
+style = "bold red"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+conflicted = "=${count}"
+untracked = "?${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+stashed = "≡${count}"
+
+[nodejs]
+format = "[$symbol($version)]($style) "
+symbol = " "
+style = "bold green"
+
+[bun]
+format = "[$symbol($version)]($style) "
+symbol = " "
+style = "bold fg"
+
+[deno]
+format = "[$symbol($version)]($style) "
+symbol = " "
+style = "bold green"
+
+[php]
+format = "[$symbol($version)]($style) "
+symbol = " "
+style = "bold blue"
+
+[python]
+format = "[$symbol$pyenv_prefix($version)( \\($virtualenv\\))]($style) "
+symbol = " "
+style = "bold yellow"
+
+[ruby]
+format = "[$symbol($version)]($style) "
+symbol = " "
+style = "bold red"
+
+[java]
+format = "[$symbol($version)]($style) "
+symbol = " "
+style = "bold orange"
+
+[golang]
+format = "[$symbol($version)]($style) "
+symbol = " "
+style = "bold cyan"
+
+[rust]
+format = "[$symbol($version)]($style) "
+symbol = "\U000f1617 "
+style = "bold orange"
+
+[dart]
+format = "[$symbol($version)]($style) "
+symbol = " "
+style = "bold cyan"
+
+[docker_context]
+format = "[$symbol$context]($style) "
+symbol = " "
+style = "bold blue"
+
+[direnv]
+disabled = false
+format = "[$symbol$loaded]($style) "
+symbol = "direnv "
+style = "bold teal"
+loaded_msg = "on"
+unloaded_msg = "off"
+
+[cmd_duration]
+format = "[took](comment) [$duration]($style) "
+min_time = 2000
+style = "bold yellow"
+
+[jobs]
+symbol = "✦"
+style = "bold blue"
+
+[package]
+disabled = true
