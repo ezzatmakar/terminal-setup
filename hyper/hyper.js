@@ -18,7 +18,7 @@ module.exports = {
     disableLigatures: false,
 
     // ── Theme: Dracula ──────────────────────────────────────────────────────
-    // Official Dracula palette (draculatheme.com). Only lightBlack is lifted for contrast.
+    // Official Dracula palette (draculatheme.com). Only lightBlack and red are lifted for contrast.
     foregroundColor: "#f8f8f2",
     backgroundColor: "#282a36",
     selectionColor: "rgba(189, 147, 249, 0.30)",   // Dracula purple
@@ -29,7 +29,7 @@ module.exports = {
     cursorBlink: true,
     colors: {
       black: "#21222c",
-      red: "#ff5555",
+      red: "#ff6e6e",          // Dracula bright red; official #ff5555 is only 4.5:1 here
       green: "#50fa7b",
       yellow: "#f1fa8c",
       blue: "#bd93f9",         // Dracula maps ANSI blue to purple

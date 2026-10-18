@@ -31,7 +31,7 @@ BAR_CELLS = 10
 C = {
     'fg': '#f8f8f2', 'muted': '#8995bb', 'track': '#44475a',
     'blue': '#bd93f9', 'cyan': '#8be9fd', 'teal': '#8be9fd', 'green': '#50fa7b',
-    'yellow': '#f1fa8c', 'orange': '#ffb86c', 'red': '#ff5555', 'magenta': '#ff79c6',
+    'yellow': '#f1fa8c', 'orange': '#ffb86c', 'red': '#ff6e6e', 'magenta': '#ff79c6',
 }
 
 ICON = {

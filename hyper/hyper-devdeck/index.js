@@ -222,7 +222,7 @@ function buildCSS(cfg) {
   const c = cfg.colors || {};
   // Fallbacks are Dracula, matching ~/.hyper.js.
   const accent = c.blue || '#bd93f9';
-  const red = c.red || '#ff5555';
+  const red = c.red || '#ff6e6e';
   return `
 & {
   --dd-w: ${o.sidebarWidth}px;
