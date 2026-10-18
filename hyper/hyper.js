@@ -1,5 +1,5 @@
 "use strict";
-// Hyper config: Tokyo Night theme (matches the Starship prompt) + hyper-devdeck
+// Hyper config: Dracula text colors on Tokyo Night background (matches the Starship prompt) + hyper-devdeck
 // sidebar (~/.hyper_plugins/local/hyper-devdeck). All options: https://hyper.is#cfg
 // After editing plugins, press Cmd+Shift+R (View > Reload) to apply; open sessions stay.
 module.exports = {
@@ -17,34 +17,34 @@ module.exports = {
     letterSpacing: 0,
     disableLigatures: false,
 
-    // ── Theme: Tokyo Night ──────────────────────────────────────────────────
-    // Brightened Tokyo Night: text, gray (autosuggestions/comments) and sidebar labels
-    // raised to readable contrast; hues unchanged.
-    foregroundColor: "#d0d8fa",
+    // ── Theme: Dracula text on Tokyo Night background ───────────────────────
+    // Text/ANSI colors are the official Dracula palette (draculatheme.com); the
+    // darker Tokyo Night background is kept. Only lightBlack is lifted for contrast.
+    foregroundColor: "#f8f8f2",
     backgroundColor: "#1a1b26",
-    selectionColor: "rgba(122, 162, 247, 0.28)",
+    selectionColor: "rgba(189, 147, 249, 0.30)",   // Dracula purple
     borderColor: "#24283b",
-    cursorColor: "#7aa2f7",
+    cursorColor: "#ff79c6",                        // Dracula pink
     cursorAccentColor: "#1a1b26",
     cursorShape: "BEAM",
     cursorBlink: true,
     colors: {
       black: "#15161e",
-      red: "#f7768e",
-      green: "#9ece6a",
-      yellow: "#e0af68",
-      blue: "#7aa2f7",
-      magenta: "#bb9af7",
-      cyan: "#7dcfff",
-      white: "#a9b1d6",
-      lightBlack: "#7a83b0",   // was #414868 (1.9:1, autosuggestions barely visible)
-      lightRed: "#ff899d",
-      lightGreen: "#9fe044",
-      lightYellow: "#faba4a",
-      lightBlue: "#8db0ff",
-      lightMagenta: "#c7a9ff",
-      lightCyan: "#a4daff",
-      lightWhite: "#d0d8fa",
+      red: "#ff5555",
+      green: "#50fa7b",
+      yellow: "#f1fa8c",
+      blue: "#bd93f9",         // Dracula maps ANSI blue to purple
+      magenta: "#ff79c6",
+      cyan: "#8be9fd",
+      white: "#f8f8f2",
+      lightBlack: "#8995bb",   // autosuggestions/comments: Dracula comment #6272a4 lifted (3.6:1 -> 5.8:1)
+      lightRed: "#ff6e6e",
+      lightGreen: "#69ff94",
+      lightYellow: "#ffffa5",
+      lightBlue: "#d6acff",
+      lightMagenta: "#ff92df",
+      lightCyan: "#a4ffff",
+      lightWhite: "#ffffff",
     },
     padding: "14px 18px",
     css: "",
@@ -57,8 +57,8 @@ module.exports = {
       sidebarColor: "#16161e",
       surfaceColor: "#1f2335",
       activeColor: "#292e42",
-      dimColor: "#9aa5ce",     // inactive tabs, footer text
-      mutedColor: "#7a83b0",   // section label, subtitles, ⌘N badges
+      dimColor: "#a9b1cd",     // inactive tabs, footer text
+      mutedColor: "#8995bb",   // section label, subtitles, ⌘N badges
       showStats: true,       // CPU load meter in the footer
     },
 

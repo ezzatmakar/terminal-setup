@@ -1,13 +1,13 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Developer prompt: Tokyo Night colors + Nerd Font icons (font: FiraCode Nerd Font).
+# Developer prompt: Dracula colors + Nerd Font icons (font: FiraCode Nerd Font).
 # Line 1: [user@host on SSH] path  git branch + status  runtimes for this project  last command duration
 # Line 2: exit code (on failure) + prompt arrow
 
 add_newline = true
 command_timeout = 1000
 scan_timeout = 30
-palette = "tokyo_night"
+palette = "dracula"
 continuation_prompt = "[∙](comment) "
 
 format = """
@@ -16,17 +16,18 @@ $nodejs$bun$deno$php$python$ruby$java$golang$rust$dart$docker_context$direnv\
 $cmd_duration$jobs
 $status$character"""
 
-[palettes.tokyo_night]
-fg = "#d0d8fa"
-comment = "#7a83b0"
-blue = "#7aa2f7"
-cyan = "#7dcfff"
-teal = "#73daca"
-green = "#9ece6a"
-yellow = "#e0af68"
-orange = "#ff9e64"
-red = "#f7768e"
-magenta = "#bb9af7"
+[palettes.dracula]
+# Official Dracula colors; key names are roles (blue = Dracula purple, magenta = pink).
+fg = "#f8f8f2"
+comment = "#8995bb"
+blue = "#bd93f9"
+cyan = "#8be9fd"
+teal = "#8be9fd"
+green = "#50fa7b"
+yellow = "#f1fa8c"
+orange = "#ffb86c"
+red = "#ff5555"
+magenta = "#ff79c6"
 
 [character]
 success_symbol = "[❯](bold green)"

@@ -17,8 +17,8 @@ const DEFAULTS = {
   sidebarColor: '#16161e',
   surfaceColor: '#1f2335',
   activeColor: '#292e42',
-  dimColor: '#9aa5ce',
-  mutedColor: '#7a83b0',
+  dimColor: '#a9b1cd',
+  mutedColor: '#8995bb',
   showStats: true,
 };
 
@@ -209,9 +209,20 @@ function localHostName() {
 // Hyper runs config.css through stylis('#hyper', css), which prefixes every
 // selector with "#hyper ". So `:root` and `body.x …` would never match; use `&`
 // (= #hyper) and `body.x & …` (= body.x #hyper …) instead.
+// "#rrggbb" + alpha -> "rgba(r,g,b,a)", so highlight tints follow the theme colors.
+function tint(hex, alpha) {
+  const m = /^#([0-9a-f]{6})$/i.exec(hex);
+  if (!m) return `rgba(255,255,255,${alpha})`;
+  const n = parseInt(m[1], 16);
+  return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${alpha})`;
+}
+
 function buildCSS(cfg) {
   const o = Object.assign({}, DEFAULTS, cfg.devdeck || {});
   const c = cfg.colors || {};
+  // Fallbacks are Dracula, matching ~/.hyper.js.
+  const accent = c.blue || '#bd93f9';
+  const red = c.red || '#ff5555';
   return `
 & {
   --dd-w: ${o.sidebarWidth}px;
@@ -220,17 +231,17 @@ function buildCSS(cfg) {
   --dd-active: ${o.activeColor};
   --dd-hover: rgba(255,255,255,0.045);
   --dd-border: ${cfg.borderColor || '#24283b'};
-  --dd-fg: ${cfg.foregroundColor || '#c0caf5'};
+  --dd-fg: ${cfg.foregroundColor || '#f8f8f2'};
   --dd-dim: ${o.dimColor};
   --dd-muted: ${o.mutedColor};
-  --dd-accent: ${c.blue || '#7aa2f7'};
-  --dd-magenta: ${c.magenta || '#bb9af7'};
-  --dd-green: ${c.green || '#9ece6a'};
-  --dd-yellow: ${c.yellow || '#e0af68'};
-  --dd-red: ${c.red || '#f7768e'};
-  --dd-cyan: ${c.cyan || '#7dcfff'};
-  --dd-orange: #ff9e64;
-  --dd-teal: #73daca;
+  --dd-accent: ${accent};
+  --dd-magenta: ${c.magenta || '#ff79c6'};
+  --dd-green: ${c.green || '#50fa7b'};
+  --dd-yellow: ${c.yellow || '#f1fa8c'};
+  --dd-red: ${red};
+  --dd-cyan: ${c.cyan || '#8be9fd'};
+  --dd-orange: #ffb86c;
+  --dd-teal: ${c.cyan || '#8be9fd'};
   --dd-claude: #d97757;
   --dd-mono: ${cfg.fontFamily || 'monospace'};
   --dd-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
@@ -292,7 +303,7 @@ body.dd-on & .terms_terms.terms_terms { margin-top: 0 !important; left: var(--dd
 .dd-tab:hover { background: var(--dd-hover); color: var(--dd-fg); }
 .dd-tab.is-active {
   background: var(--dd-active); color: var(--dd-fg);
-  box-shadow: inset 0 0 0 1px rgba(122,162,247,0.16), 0 6px 18px rgba(0,0,0,0.25);
+  box-shadow: inset 0 0 0 1px ${tint(accent, 0.16)}, 0 6px 18px rgba(0,0,0,0.25);
 }
 .dd-tab.is-active::before {
   content: ''; position: absolute; left: -8px; top: 9px; bottom: 9px; width: 3px;
@@ -303,7 +314,7 @@ body.dd-on & .terms_terms.terms_terms { margin-top: 0 !important; left: var(--dd
   display: inline-flex; align-items: center; justify-content: center;
   font-family: var(--dd-mono); font-size: 14px; background: rgba(255,255,255,0.035);
 }
-.dd-tab.is-active .dd-ico { background: rgba(122,162,247,0.12); }
+.dd-tab.is-active .dd-ico { background: ${tint(accent, 0.12)}; }
 .dd-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; line-height: 1.3; }
 .dd-title { font-size: 12.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .dd-sub {
@@ -318,7 +329,7 @@ body.dd-on & .terms_terms.terms_terms { margin-top: 0 !important; left: var(--dd
 .dd-close { display: none; width: 20px; height: 20px; font-size: 12px; }
 .dd-tab:hover .dd-close { display: inline-flex; }
 .dd-tab:hover .dd-kbd { display: none; }
-.dd-close:hover { color: var(--dd-red); background: rgba(247,118,142,0.12); }
+.dd-close:hover { color: var(--dd-red); background: ${tint(red, 0.12)}; }
 .dd-dot { position: absolute; left: 27px; top: 6px; width: 7px; height: 7px; border-radius: 50%; border: 2px solid var(--dd-bg); }
 .dd-dot.activity { background: var(--dd-teal); }
 .dd-dot.running { background: var(--dd-green); animation: dd-pulse 1.6s ease-in-out infinite; }
@@ -362,18 +373,21 @@ body.dd-on & .splitpane_divider { background-color: var(--dd-border) !important;
 `;
 }
 
-const TERM_CSS = `
+function buildTermCSS(cfg) {
+  const accent = (cfg.colors || {}).blue || '#bd93f9';
+  return `
 .xterm-viewport::-webkit-scrollbar { width: 8px; }
 .xterm-viewport::-webkit-scrollbar-track { background: transparent; }
-.xterm-viewport::-webkit-scrollbar-thumb { background: rgba(122,162,247,0.18); border-radius: 8px; }
-.xterm-viewport::-webkit-scrollbar-thumb:hover { background: rgba(122,162,247,0.35); }
+.xterm-viewport::-webkit-scrollbar-thumb { background: ${tint(accent, 0.18)}; border-radius: 8px; }
+.xterm-viewport::-webkit-scrollbar-thumb:hover { background: ${tint(accent, 0.35)}; }
 `;
+}
 
 exports.decorateConfig = (config) => {
   try {
     return Object.assign({}, config, {
       css: (config.css || '') + buildCSS(config),
-      termCSS: (config.termCSS || '') + TERM_CSS,
+      termCSS: (config.termCSS || '') + buildTermCSS(config),
     });
   } catch (e) {
     console.error('[devdeck] decorateConfig failed', e);

@@ -2,7 +2,7 @@
 
 My macOS terminal setup: [Hyper](https://hyper.is) with a Warp-style session sidebar,
 a [Starship](https://starship.rs) prompt, a Claude Code status line, and zsh with Oh My Zsh.
-Everything uses the same brightened **Tokyo Night** colors and **FiraCode Nerd Font** icons.
+Everything uses the same **Dracula** text colors (on a darker Tokyo Night background) and **FiraCode Nerd Font** icons.
 
 ## What's inside
 

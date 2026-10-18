@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Claude Code status line: Tokyo Night colors + Nerd Font icons.
+"""Claude Code status line: Dracula colors + Nerd Font icons.
 
   Line 1  model · effort · context bar · cost           5h limit bar · reset time · countdown
   Line 2  folder · git branch · session +/- lines        7d limit · prompt-cache countdown
@@ -26,11 +26,12 @@ import unicodedata
 RIGHT_MARGIN = 4
 BAR_CELLS = 10
 
-# Tokyo Night (same palette as ~/.hyper.js and starship.toml)
+# Dracula (same palette as ~/.hyper.js and starship.toml).
+# Keys are roles: blue = Dracula purple, magenta = pink, teal = cyan.
 C = {
-    'fg': '#d0d8fa', 'muted': '#7a83b0', 'track': '#3b4261',
-    'blue': '#7aa2f7', 'cyan': '#7dcfff', 'teal': '#73daca', 'green': '#9ece6a',
-    'yellow': '#e0af68', 'orange': '#ff9e64', 'red': '#f7768e', 'magenta': '#bb9af7',
+    'fg': '#f8f8f2', 'muted': '#8995bb', 'track': '#44475a',
+    'blue': '#bd93f9', 'cyan': '#8be9fd', 'teal': '#8be9fd', 'green': '#50fa7b',
+    'yellow': '#f1fa8c', 'orange': '#ffb86c', 'red': '#ff5555', 'magenta': '#ff79c6',
 }
 
 ICON = {
