@@ -14,9 +14,9 @@
 const DEFAULTS = {
   sidebarWidth: 240,
   collapsedWidth: 78, // macOS traffic lights need ~76px
-  sidebarColor: '#16161e',
-  surfaceColor: '#1f2335',
-  activeColor: '#292e42',
+  sidebarColor: '#21222c',
+  surfaceColor: '#282a36',
+  activeColor: '#343746',
   dimColor: '#a9b1cd',
   mutedColor: '#8995bb',
   showStats: true,
@@ -230,7 +230,7 @@ function buildCSS(cfg) {
   --dd-surface: ${o.surfaceColor};
   --dd-active: ${o.activeColor};
   --dd-hover: rgba(255,255,255,0.045);
-  --dd-border: ${cfg.borderColor || '#24283b'};
+  --dd-border: ${cfg.borderColor || '#343746'};
   --dd-fg: ${cfg.foregroundColor || '#f8f8f2'};
   --dd-dim: ${o.dimColor};
   --dd-muted: ${o.mutedColor};
@@ -321,6 +321,7 @@ body.dd-on & .terms_terms.terms_terms { margin-top: 0 !important; left: var(--dd
   font-family: var(--dd-mono); font-size: 10.5px; color: var(--dd-muted);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+.dd-tab.is-active .dd-sub { color: var(--dd-dim); } /* muted is too faint on the active bg */
 .dd-tab.is-running .dd-title { font-family: var(--dd-mono); font-weight: 500; font-size: 11.5px; }
 .dd-kbd {
   flex: 0 0 auto; font-family: var(--dd-mono); font-size: 10px; color: var(--dd-muted);

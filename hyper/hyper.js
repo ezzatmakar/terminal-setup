@@ -23,7 +23,7 @@ module.exports = {
     foregroundColor: "#f8f8f2",
     backgroundColor: "#1a1b26",
     selectionColor: "rgba(189, 147, 249, 0.30)",   // Dracula purple
-    borderColor: "#24283b",
+    borderColor: "#343746",                       // Dracula "BG light": window, splits, sidebar edges
     cursorColor: "#ff79c6",                        // Dracula pink
     cursorAccentColor: "#1a1b26",
     cursorShape: "BEAM",
@@ -54,9 +54,9 @@ module.exports = {
     devdeck: {
       sidebarWidth: 240,     // px when expanded
       collapsedWidth: 78,    // px in icon-only mode (toggle from the sidebar footer)
-      sidebarColor: "#16161e",
-      surfaceColor: "#1f2335",
-      activeColor: "#292e42",
+      sidebarColor: "#21222c",   // Dracula sidebar shades (from the Dracula VS Code theme)
+      surfaceColor: "#282a36",   // badges, CPU meter track
+      activeColor: "#343746",    // active tab
       dimColor: "#a9b1cd",     // inactive tabs, footer text
       mutedColor: "#8995bb",   // section label, subtitles, ⌘N badges
       showStats: true,       // CPU load meter in the footer
