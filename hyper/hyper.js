@@ -1,5 +1,5 @@
 "use strict";
-// Hyper config: Dracula text colors on Tokyo Night background (matches the Starship prompt) + hyper-devdeck
+// Hyper config: Dracula theme (matches the Starship prompt) + hyper-devdeck
 // sidebar (~/.hyper_plugins/local/hyper-devdeck). All options: https://hyper.is#cfg
 // After editing plugins, press Cmd+Shift+R (View > Reload) to apply; open sessions stay.
 module.exports = {
@@ -17,19 +17,18 @@ module.exports = {
     letterSpacing: 0,
     disableLigatures: false,
 
-    // ── Theme: Dracula text on Tokyo Night background ───────────────────────
-    // Text/ANSI colors are the official Dracula palette (draculatheme.com); the
-    // darker Tokyo Night background is kept. Only lightBlack is lifted for contrast.
+    // ── Theme: Dracula ──────────────────────────────────────────────────────
+    // Official Dracula palette (draculatheme.com). Only lightBlack is lifted for contrast.
     foregroundColor: "#f8f8f2",
-    backgroundColor: "#1a1b26",
+    backgroundColor: "#282a36",
     selectionColor: "rgba(189, 147, 249, 0.30)",   // Dracula purple
-    borderColor: "#343746",                       // Dracula "BG light": window, splits, sidebar edges
+    borderColor: "#44475a",                       // Dracula "current line": window, splits, sidebar edges
     cursorColor: "#ff79c6",                        // Dracula pink
-    cursorAccentColor: "#1a1b26",
+    cursorAccentColor: "#282a36",
     cursorShape: "BEAM",
     cursorBlink: true,
     colors: {
-      black: "#15161e",
+      black: "#21222c",
       red: "#ff5555",
       green: "#50fa7b",
       yellow: "#f1fa8c",
